@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опросы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7fc; /* Светлый фон для страницы */
+        }
+
+        header {
+            background-color: #00455e; /* Темный фон для шапки */
+        }
+
+        footer {
+            background-color: #f8f9fa; /* Светлый фон для подвала */
+        }
+
+        .card {
+            border-radius: 10px; /* Закругленные углы карточек */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для карточек */
+        }
+
+        .card-title {
+            color: #007bff; /* Синий цвет для заголовков карточек */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Основной цвет кнопок */
+            border: none;
+            border-radius: 5px; /* Закругленные углы кнопок */
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Цвет кнопки при наведении */
+        }
+
+        .container {
+            max-width: 1200px; /* Ограничиваем максимальную ширину контейнера */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1>Опрос: для бОИС-211</h1>
+            <a href="{% url 'polls:all_results' %}" class="btn btn-primary">Все результаты</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mt-4">
+        <h2 class="mb-4 text-center">Выберите вопрос:</h2>
+        <div class="row">
+            {% for question in latest_question_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ question.question_text }}</h5>
+                            <a href="{{ question.id }}/" class="btn btn-primary">Дать ответ</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-3 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">Корчанова Людмила Евгеньевна</p>
+        </div>
+    </footer>
+</body>
+</html>
