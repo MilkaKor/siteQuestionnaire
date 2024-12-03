@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+PORT = os.getenv("PORT", 8000)
+
 
 # Application definition
 
